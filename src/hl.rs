@@ -209,7 +209,7 @@ impl Device {
             String::from_utf8_unchecked(buf)
         }
     }
-    
+
     pub fn name(&self) -> String
     {
         self.profile_info(CL_DEVICE_NAME)
@@ -226,7 +226,7 @@ impl Device {
     {
         self.profile_info(CL_DEVICE_TYPE)
     }
-	
+
     pub fn compute_units(&self) -> usize {
 		unsafe {
 			let mut ct: usize = 0;
@@ -539,7 +539,7 @@ impl CommandQueue
                                                           event_list_length,
                                                           event_list,
                                                           ptr::null_mut());
-                            
+
                             check(err, "Failed to read buffer");
                         }
                     })
@@ -579,15 +579,24 @@ impl Drop for Program
 
 impl Program
 {
-    /// Build the program for a given device.
+    /// Build the program for a given device with given compiler options.
     ///
     /// Both Ok and Err returns include the build log.
     pub fn build(&self, device: &Device) -> Result<String, String>
     {
+        self.build_with_options(device, "")
+    }
+
+    /// Build the program for a given device.
+    ///
+    /// Both Ok and Err returns include the build log.
+    pub fn build_with_options(&self, device: &Device, options: &str) -> Result<String, String>
+    {
         unsafe
         {
+            let options = CString::new(options).unwrap();
             let ret = clBuildProgram(self.prg, 1, &device.id,
-                                     ptr::null(),
+                                     options.as_ptr(),
                                      mem::transmute(ptr::null::<fn()>()),
                                      ptr::null_mut());
             // Get the build log.
