@@ -128,18 +128,12 @@ impl Platform {
     }
 }
 
-// This mutex is used to work around weak OpenCL implementations.
-// On some implementations concurrent calls to clGetPlatformIDs
-// will cause the implantation to return invalid status.
-static mut platforms_mutex: std::sync::StaticMutex = std::sync::MUTEX_INIT;
-
 pub fn get_platforms() -> Vec<Platform>
 {
     let mut num_platforms = 0 as cl_uint;
 
     unsafe
     {
-        let guard = platforms_mutex.lock();
         let status = clGetPlatformIDs(0,
                                           ptr::null_mut(),
                                           (&mut num_platforms));
@@ -153,8 +147,6 @@ pub fn get_platforms() -> Vec<Platform>
                                       ids.as_mut_ptr(),
                                       (&mut num_platforms));
         check(status, "could not get platforms.");
-
-        let _ = guard;
 
         ids.iter().map(|id| { Platform { id: *id } }).collect()
     }
@@ -426,7 +418,7 @@ impl CommandQueue
                     ptr::null(),
                     global.get_ptr(),
                     match local {
-                        Some(ref l) => l.get_ptr() as *const u64,
+                        Some(ref l) => l.get_ptr() as *const libc::size_t,
                         None => ptr::null()
                     },
                     event_list_length,
@@ -455,7 +447,7 @@ impl CommandQueue
                     ptr::null(),
                     global.get_ptr(),
                     match local {
-                        Some(ref l) => l.get_ptr() as *const u64,
+                        Some(ref l) => l.get_ptr() as *const libc::size_t,
                         None => ptr::null()
                     },
                     event_list_length,
@@ -838,7 +830,7 @@ impl EventList for () {
 
 pub trait KernelIndex
 {
-    fn num_dimensions(dummy_self: Option<Self>) -> cl_uint;
+    fn num_dimensions(dummy_self: Option<Self>) -> cl_uint where Self: Sized;
     fn get_ptr(&self) -> *const libc::size_t;
 }
 
