@@ -13,8 +13,8 @@ install:
       mv ./icd/* .;
       mkdir -p inc/CL;
       pushd inc/CL;
-      wget -r -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/1.2/;
-      wget -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/2.1/cl.hpp;
+      wget --no-check-certificate -r -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/1.2/;
+      wget --no-check-certificate -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/2.1/cl.hpp;
       popd;
       mkdir -p lib;
       pushd lib;
