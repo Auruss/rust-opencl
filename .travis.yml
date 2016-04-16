@@ -5,8 +5,26 @@ rust:
 - nightly
 
 install:
-  - sudo apt-get update
-  - sudo apt-get install fglrx opencl-headers
+  - if [ ${TRAVIS_OS_NAME} == "linux" ]; then
+      mkdir -p ${OPENCL_ROOT};
+      pushd ${OPENCL_ROOT};
+      wget ${OPENCL_REGISTRY}/specs/opencl-icd-1.2.11.0.tgz;
+      tar -xf opencl-icd-1.2.11.0.tgz;
+      mv ./icd/* .;
+      mkdir -p inc/CL;
+      pushd inc/CL;
+      wget -r -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/1.2/;
+      wget -w 1 -np -nd -nv -A h,hpp https://www.khronos.org/registry/cl/api/2.1/cl.hpp;
+      popd;
+      mkdir -p lib;
+      pushd lib;
+      cmake -G "Unix Makefiles" ..;
+      make;
+      cp ../bin/libOpenCL.so .;
+      popd;
+      mv inc/ include/;
+      popd;
+    fi
 
 after_success: |
   [ $TRAVIS_BRANCH = master ] &&
