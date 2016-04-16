@@ -1,0 +1,10 @@
+(function() {var implementors = {};
+implementors['opencl'] = ["impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/hl/struct.Context.html' title='opencl::hl::Context'>Context</a>","impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/hl/struct.CommandQueue.html' title='opencl::hl::CommandQueue'>CommandQueue</a>","impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/hl/struct.Program.html' title='opencl::hl::Program'>Program</a>","impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/hl/struct.Kernel.html' title='opencl::hl::Kernel'>Kernel</a>","impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/hl/struct.Event.html' title='opencl::hl::Event'>Event</a>","impl&lt;T&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/mem/struct.CLBuffer.html' title='opencl::mem::CLBuffer'>CLBuffer</a>&lt;T&gt;","impl&lt;T&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/array/struct.Array3DCL.html' title='opencl::array::Array3DCL'>Array3DCL</a>&lt;T&gt;","impl&lt;T&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='opencl/array/struct.Array2DCL.html' title='opencl::array::Array2DCL'>Array2DCL</a>&lt;T&gt;",];
+
+            if (window.register_implementors) {
+                window.register_implementors(implementors);
+            } else {
+                window.pending_implementors = implementors;
+            }
+        
+})()

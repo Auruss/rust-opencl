@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["array","Two- and three-dimensional array support."],["cl","Low-level OpenCL bindings. These should primarily be used by the higher level features in this library."],["error","Error handling utilities."],["ext","OpenCL extensions"],["hl","A higher level API."],["mem","High level buffer management."],["util","Utility functions"]]});

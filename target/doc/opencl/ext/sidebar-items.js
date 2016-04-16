@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["cl_APPLE_ContextLoggingFunctions",""],["cl_APPLE_SetMemObjectDestructor",""],["cl_amd_device_attribute_query",""],["cl_arm_printf",""],["cl_ext_device_fission",""],["cl_khr_fp16",""],["cl_khr_fp64",""],["cl_khr_icd",""],["cl_nv_device_attribute_query",""],["cl_qcom_ext_host_ptr",""],["cl_qcom_ion_host_ptr",""]]});

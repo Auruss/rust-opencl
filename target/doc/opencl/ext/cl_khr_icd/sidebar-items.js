@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["load",""]],"static":[["CL_PLATFORM_ICD_SUFFIX",""],["CL_PLATFORM_NOT_FOUND_KHR",""]],"struct":[["Functions",""]]});
