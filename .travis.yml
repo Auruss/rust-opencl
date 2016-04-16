@@ -3,6 +3,11 @@ rust:
 - stable
 - beta
 - nightly
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install fglrx opencl-headers
+
 after_success: |
   [ $TRAVIS_BRANCH = master ] &&
   [ $TRAVIS_PULL_REQUEST = false ] &&
