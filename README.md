@@ -3,4 +3,4 @@
 OpenCL bindings for Rust.
 
 ## [Link to the documentation](http://auruss.github.io/rust-opencl/target/doc/opencl/index.html)
-## Current version: OpenCL 1.1 (update not planned yet, feel free to contribute)
+## Current version: OpenCL 1.2 (update not planned yet, feel free to contribute)
